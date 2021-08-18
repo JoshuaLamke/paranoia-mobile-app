@@ -4,14 +4,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/pages/Home';
+import COLORS from './src/utils/colors';
 
 const Stack = createNativeStackNavigator();
 
 const App: React.FC<{}> = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
-        <Stack.Screen name="Welcome" component={Home} />
+      <Stack.Navigator initialRouteName="Welcome" screenOptions={{title: "", headerStyle: {backgroundColor: COLORS.primaryBackgroundLight}, headerTitleStyle: {color: COLORS.primaryText}}}>
+        <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );
