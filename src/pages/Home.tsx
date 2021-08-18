@@ -1,21 +1,24 @@
 import React from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 import COLORS from '../utils/colors';
+import { LinearGradient } from 'expo-linear-gradient';
+
 interface Props {
 
 }
 
 const Home: React.FC<Props> = () => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.welcomeText}>Welcome to Paranoia!</Text>
-        </View>
+        <LinearGradient colors={[COLORS.primaryBackgroundLight, COLORS.primaryBackgroundDark]}>
+            <View style={styles.container}>
+                <Text style={styles.welcomeText}>Welcome to Paranoia!</Text>
+            </View>
+        </LinearGradient>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: COLORS.primaryBackground,
         height: "100%"
     },
     welcomeText: {
@@ -26,4 +29,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Home
+export default Home;
