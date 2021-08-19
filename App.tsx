@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/pages/Home';
+import Join from './src/pages/Join';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,7 @@ const App: React.FC<{}> = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen name="Welcome" component={Home} />
+        <Stack.Screen name="Join" component={Join} />
       </Stack.Navigator>
     </NavigationContainer>
   );
