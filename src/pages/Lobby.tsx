@@ -8,17 +8,17 @@ interface Props {
     navigation: NavigationStackProp<{ userId: string }>;
 }
 
-const Home: React.FC<Props> = ({navigation}) => {
+const Lobby: React.FC<Props> = ({navigation}) => {
     return (
         <LinearGradient colors={[COLORS.primaryBackgroundLight, COLORS.primaryBackgroundDark]}>
             <View style={styles.container}>
-                <Text style={styles.welcomeText}>Welcome to Paranoia!</Text>
+                <Text style={styles.welcomeText}>You are hosting a new room!</Text>
+                <Text style={styles.welcomeText}>Your room code is </Text>
+                <Text style={styles.welcomeText}>{}</Text>
+                <Text style={styles.welcomeText}>Players:</Text>
                 <View style={styles.buttons}>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Create')}>
-                        <Text style={styles.buttonText}>Create a Room</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Join')}>
-                        <Text style={styles.buttonText}>Join a Room</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => {}}>
+                        <Text style={styles.buttonText}>Everyone is in</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Home;
+export default Lobby;

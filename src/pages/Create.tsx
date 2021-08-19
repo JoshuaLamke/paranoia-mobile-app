@@ -1,33 +1,48 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert} from 'react-native';
+import { NavigationStackProp } from 'react-navigation-stack';
 import COLORS from '../utils/colors';
 import { LinearGradient } from 'expo-linear-gradient';
 interface Props {
-
+    navigation: NavigationStackProp<{ userId: string }>;
 }
 
-const Join: React.FC<Props> = () => {
+const Create: React.FC<Props> = ({navigation}) => {
+    const [name, setName] = useState('');
+
+    const buttonHandler = () => {
+        if ((name.trim() != '') && (!/[^a-zA-Z]/.test(name)) && (name.length > 1)) {
+            navigation.navigate('Lobby');
+        }
+        else {
+            Alert.alert("Please enter your name", "We only accept letters (no special characters or numbers)", [
+                {text: 'Ok', style: 'cancel'}
+            ]);
+        }   
+    }
 
     return (
         <LinearGradient colors={[COLORS.primaryBackgroundLight, COLORS.primaryBackgroundDark]}>
             <View style={styles.container}>
-                <Text style={styles.welcomeText}>Join a Room</Text>
+                <Text style={styles.welcomeText}>Enter your name</Text>
                 <View style={styles.input}>
                     <TextInput style={styles.textInput}
                         autoCapitalize='none' 
                         autoCorrect={false} 
                         keyboardType="default" 
-                        maxLength={4}
+                        maxLength={12}
                         allowFontScaling={true}
                         autoFocus={true}
                         keyboardAppearance='dark'
                         multiline={false}
-                        placeholder='code'
+                        placeholder='Your name'
+                        onChangeText={text => setName(text)}
+                        defaultValue={name}
                     />
                 </View>
                 <View style={styles.buttons}>
-                    <TouchableOpacity style={styles.button} onPress={() => {}}>
-                        <Text style={styles.buttonText}>Join Room</Text>
+                    <TouchableOpacity style={styles.button} onPress={buttonHandler}>
+                        <Text style={styles.buttonText}>Create Room</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -51,19 +66,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
-        width: '25%',
+        width: '50%',
         height: 50,
-        marginTop: 10,
+        margin: 10,
         padding: 5
     },
     textInput: {
         fontSize: 24
     },
     buttons: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
-        marginVertical: 50
+        marginBottom: 50
     },
     button: {
         marginBottom: 50,
@@ -81,4 +97,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Join
+export default Create
