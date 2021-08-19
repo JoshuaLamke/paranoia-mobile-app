@@ -3,9 +3,16 @@ import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
 import COLORS from '../utils/colors';
 import { LinearGradient } from 'expo-linear-gradient';
+import { RootStackParamList } from '../../App';
+import { StackNavigationProp } from 'react-navigation-stack/lib/typescript/src/vendor/types';
+
+type HomeScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Home'
+>;
 
 interface Props {
-    navigation: NavigationStackProp<{ userId: string }>;
+    navigation: HomeScreenNavigationProp;
 }
 
 const Home: React.FC<Props> = ({navigation}) => {
