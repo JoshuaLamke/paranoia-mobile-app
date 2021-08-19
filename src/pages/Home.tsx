@@ -2,31 +2,33 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
 import COLORS from '../utils/colors';
+import { LinearGradient } from 'expo-linear-gradient';
+
 interface Props {
     navigation: NavigationStackProp<{ userId: string }>;
 }
 
 const Home: React.FC<Props> = ({navigation}) => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.welcomeText}>Welcome to Paranoia!</Text>
-            <View style={styles.buttons}>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Create a Room</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Join')}>
-                    <Text style={styles.buttonText}>Join a Room</Text>
-                </TouchableOpacity>
+        <LinearGradient colors={[COLORS.primaryBackgroundLight, COLORS.primaryBackgroundDark]}>
+            <View style={styles.container}>
+                <Text style={styles.welcomeText}>Welcome to Paranoia!</Text>
+                <View style={styles.buttons}>
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttonText}>Create a Room</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Join')}>
+                        <Text style={styles.buttonText}>Join a Room</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-        </View>
+        </LinearGradient>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: COLORS.primaryBackground,
-        height: "100%",
-        flex: 1
+        height: "100%"
     },
     welcomeText: {
         color: COLORS.primaryText,
@@ -57,4 +59,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Home
+export default Home;

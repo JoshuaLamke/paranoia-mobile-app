@@ -29,7 +29,6 @@ const Join: React.FC<Props> = () => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: COLORS.primaryBackground,
         height: "100%",
         alignItems: 'center'
     },

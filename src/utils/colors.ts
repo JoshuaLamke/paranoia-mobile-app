@@ -1,5 +1,6 @@
 enum COLORS {
-    primaryBackground = "#a4508b",
+    primaryBackgroundLight = "#a4508b",
+    primaryBackgroundDark = "#5f0a87",
     primaryText = "#FFFFFF"
 }
 
